@@ -3,24 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConversorAlgarismoRomano.Interfaces;
 using ConversorAlgarismoRomano.Models;
 
 namespace ConversorAlgarismoRomano.Services
 {
     public class ConversorService
     {
-        private readonly ValidadorNumeralService _validadorService;
+        private readonly IGerenciadorDeValidacoes _gerenciadorDeValidacoes;
         public Numeral Numeral { get; private set; } = new Numeral();
         public int ValorConvertido { get; private set; } = 0;
 
         public ConversorService()
         {
-            _validadorService = new ValidadorNumeralService();
+            _gerenciadorDeValidacoes = new GerenciadorDeValidacoes();
         }
 
         public void PrepararParaConversao(string input)
         {
-            Numeral = _validadorService.ValidarNumeral(input);
+            Numeral = _gerenciadorDeValidacoes.IniciarValidacao(input);
         }
 
         public int Converter()
