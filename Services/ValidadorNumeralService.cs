@@ -12,18 +12,20 @@ namespace ConversorAlgarismoRomano.Services
 {
     public class ValidadorNumeralService
     {
-        public static Numeral Numeral {  get; set; }
+        public Numeral Numeral { get; set; }
+        private GerenciadorDeValidacoes _gerenciador { get; }
 
-        static ValidadorNumeralService()
+        public ValidadorNumeralService()
         {
-            Numeral = Numeral.GetNumeral();
+            _gerenciador = new GerenciadorDeValidacoes();
+            Numeral = new Numeral();
         }
 
         public Numeral ValidarNumeral(string inputNumeralUsuario)
         {
-            GerenciadorDeValidacoes.ValidarCadaSimboloDoNumeral(inputNumeralUsuario);
+            _gerenciador.IniciarValidacao(inputNumeralUsuario);
             List<Algarismo> algarismosAValidar = PrepararAlgarismosParaValidação(inputNumeralUsuario);
-            GerenciadorDeValidacoes.Validar(algarismosAValidar);
+            _gerenciador.Validar(algarismosAValidar);
             List<Algarismo> algarismosValidos = algarismosAValidar;
             Numeral.AdicionarAlgarismosNoNumeralValido(algarismosValidos);
 

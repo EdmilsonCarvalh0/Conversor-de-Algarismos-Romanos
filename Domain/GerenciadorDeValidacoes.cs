@@ -24,7 +24,7 @@ namespace ConversorAlgarismoRomano.Rules
             _regraIgualdade = new IgualdadeRule();
         }
 
-        internal static void Validar(List<Algarismo> algarismosAVerificar)
+        internal void Validar(List<Algarismo> algarismosAVerificar)
         {
             Algarismos = algarismosAVerificar;
 
@@ -68,12 +68,9 @@ namespace ConversorAlgarismoRomano.Rules
             {
                 ChecarBlocoRepeticao();
                 VerificarPosterioridadeDoBlocoRepeticao(algarismoAtual, proximoAlgarismo);
-
                 AvaliarRepeticaoUnicaComDecrescencia(algarismoAtual, proximoAlgarismo);
                 AvaliarRepeticaoDuplaComDecrescencia(algarismoAtual, proximoAlgarismo);
-
                 ValidarIgualdadeParaProsseguir(algarismoAtual, proximoAlgarismo);
-
                 AvaliarSeHaSubtracaoPosRepeticao(algarismoAtual, proximoAlgarismo);
             }
         }
@@ -190,7 +187,7 @@ namespace ConversorAlgarismoRomano.Rules
             }
         }
 
-        internal static void ValidarCadaSimboloDoNumeral(string inputNumeralUsuario)
+        internal void IniciarValidacao(string inputNumeralUsuario)
         {
             foreach (var letra in inputNumeralUsuario)
             {
@@ -198,7 +195,7 @@ namespace ConversorAlgarismoRomano.Rules
             }
         }
 
-        private static void ValidarSimbolo(char letra)
+        private void ValidarSimbolo(char letra)
         {
             Simbolo simboloUsuario = Simbolo.GetSimbolo(letra)!;
             if (simboloUsuario == null)

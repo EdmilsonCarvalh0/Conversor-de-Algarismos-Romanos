@@ -12,7 +12,7 @@ namespace ConversorAlgarismoRomano.Controlers
 {
     internal class Orquestrador
     {
-        private static ConversorService _conversor {  get; set; } = new ConversorService();
+        private readonly ConversorService _conversor;
 
         public Orquestrador(ConversorService conversor)
         {
@@ -21,22 +21,28 @@ namespace ConversorAlgarismoRomano.Controlers
 
         public void Executar()
         {
-            string inputNumeral = EntradaUsuario.GetNumeralUsuario();
+            while (true)
+            {
+                string inputNumeral = EntradaUsuario.GetNumeralUsuario();
 
-            try
-            {
-                int resultado = _conversor.Converter(inputNumeral);
+                try
+                {
+                    _conversor.PrepararParaConversao(inputNumeral);
 
-                EntradaUsuario.ExibirResultado(resultado);
-            }
-            catch (NumeralInvalidoException ex)
-            {
-                Console.WriteLine(ex.Message);
-                Executar();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Erro inesperado: {ex.Message}");
+                    int resultado = _conversor.Converter();
+
+                    EntradaUsuario.ExibirResultado(resultado);
+                    break;
+                }
+                catch (NumeralInvalidoException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Erro inesperado: {ex.Message}");
+                    break;
+                }
             }
         }
     }

@@ -19,7 +19,7 @@ namespace ConversorAlgarismoRomano.Models
         public static readonly Algarismo c = new();
         public static readonly Algarismo d = new();
         public static readonly Algarismo m = new();
-
+        
         public static ImmutableList<Algarismo> Algarismos { get; private set; }
 
         static Algarismo()

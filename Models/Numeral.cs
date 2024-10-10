@@ -16,14 +16,14 @@ namespace ConversorAlgarismoRomano.Models
             AlgarismosDoNumeral = new List<Algarismo>();
         }
 
-        public static Numeral GetNumeral()
-        {
-            return new Numeral();
-        }
-
         internal void AdicionarAlgarismosNoNumeralValido(List<Algarismo> algarismos)
         {
             AlgarismosDoNumeral = algarismos;
+            TornarValido();
+        }
+
+        internal void TornarValido()
+        {
             Valido = true;
         }
     }
