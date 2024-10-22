@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ConversorAlgarismoRomano")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9d1f88a0d879433186b98d1c17e5e432375e28dc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+455bf311dc0f5732936c6dd71bb1347504c8e0c9")]
 [assembly: System.Reflection.AssemblyProductAttribute("ConversorAlgarismoRomano")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ConversorAlgarismoRomano")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

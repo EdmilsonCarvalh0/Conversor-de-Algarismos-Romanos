@@ -54,6 +54,21 @@ namespace ConversorAlgarismoRomano.Services
             _estado.EstaIgual = _regraIgualdade.ChecarIgualdade(algarismoAtual, proximoAlgarismo);
         }
 
+        private void AplicarValidacaoSubtracao(Algarismo algarismoAtual, Algarismo proximoAlgarismo)
+        {
+            if (_estado.ExisteSubtracao)
+            {
+                if (_regraSubtracao.ChecarSubtracao(algarismoAtual, proximoAlgarismo))
+                {
+                    _estado.PonteiroAtual++;
+                    _estado.PonteiroSeguinte++;
+                    return;
+                }
+
+                AvaliarSeHaDecrescenciaPosSubtracao(algarismoAtual, proximoAlgarismo);
+            }
+        }
+
         private void AplicarValidacaoDecrescencia(Algarismo algarismoAtual, Algarismo proximoAlgarismo)
         {
             if (_estado.EstaDecrescente)
@@ -77,21 +92,6 @@ namespace ConversorAlgarismoRomano.Services
             }
         }
 
-        private void AplicarValidacaoSubtracao(Algarismo algarismoAtual, Algarismo proximoAlgarismo)
-        {
-            if (_estado.ExisteSubtracao)
-            {
-                if (_regraSubtracao.ChecarSubtracao(algarismoAtual, proximoAlgarismo))
-                {
-                    _estado.PonteiroAtual++;
-                    _estado.PonteiroSeguinte++;
-                    return;
-                }
-
-                AvaliarSeHaDecrescenciaPosSubtracao(algarismoAtual, proximoAlgarismo);
-            }
-        }
-
         private void AvaliarSeHaDecrescenciaPosSubtracao(Algarismo algarismoAtual, Algarismo proximoAlgarismo)
         {
             bool temDecrescencia = _regraDecrescencia.ChecarDecrescencia(algarismoAtual, proximoAlgarismo);
@@ -102,7 +102,7 @@ namespace ConversorAlgarismoRomano.Services
 
             if (!temDecrescencia)
             {
-                _estado.Reiniciar();
+                _estado.ReiniciarEstado();
                 throw new NumeralInvalidoException($"O numeral infringe as regras de subtração.");
             }
         }
@@ -123,7 +123,7 @@ namespace ConversorAlgarismoRomano.Services
             _estado.ExisteSubtracao = _regraSubtracao.ChecarSubtracao(algarismoAtual, proximoAlgarismo);
             if (_estado.ExisteSubtracao)
             {
-                _estado.Reiniciar();
+                _estado.ReiniciarEstado();
                 throw new NumeralInvalidoException($"O numeral apresenta uma subtração após uma repetição de um algarismo.");
             }
         }
@@ -137,7 +137,7 @@ namespace ConversorAlgarismoRomano.Services
         {
             if (repetido == 3)
             {
-                _estado.Reiniciar();
+                _estado.ReiniciarEstado();
                 throw new NumeralInvalidoException($"O numeral possui mais de três algarismos iguais.");
             }
         }
@@ -147,7 +147,7 @@ namespace ConversorAlgarismoRomano.Services
             bool existeSubtracao = _regraSubtracao.ChecarSubtracao(primeiroAlgarismo, segundoAlgarismo);
             if (repetido == 1 && existeSubtracao)
             {
-                _estado.Reiniciar();
+                _estado.ReiniciarEstado();
                 throw new NumeralInvalidoException($"Algarismos 'V', 'L', 'D' não podem ser repetidos.");
             }
         }
@@ -182,7 +182,7 @@ namespace ConversorAlgarismoRomano.Services
                 bool decrescente = _regraDecrescencia.ChecarDecrescencia(primeiroAlgarismo, segundoAlgarismo);
                 if (!decrescente)
                 {
-                    _estado.Reiniciar();
+                    _estado.ReiniciarEstado();
                     throw new NumeralInvalidoException($"O numeral possui mais de três algarismos iguais.");
                 }
                 _estado.Repetido = 0;

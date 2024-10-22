@@ -54,14 +54,14 @@ namespace ConversorAlgarismoRomano.Rules
         {
             if (BlocoRepeticaoCompleto)
             {
-                Reiniciar();
+                ReiniciarEstado();
                 PonteiroAtual++;
                 PonteiroSeguinte++;
                 //continue;
             }
         }
 
-        internal void Reiniciar()
+        internal void ReiniciarEstado()
         {
             EstaDecrescente = false;
             ExisteSubtracao = false;
