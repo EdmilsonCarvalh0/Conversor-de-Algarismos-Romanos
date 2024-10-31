@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace ConversorAlgarismoRomano.InputHandlers
 {
-    static class EntradaUsuario
+    public class EntradaUsuario
     {
         private static string InputNumeralUsuario { get; set; } = "";
 
         public static Numeral Numeral { get; private set; } = new Numeral();
 
-        public static string GetNumeralUsuario()
+        public string GetNumeralUsuario()
         {
             Console.WriteLine("Informe um numeral romano para converter: ");
             InputNumeralUsuario = Console.ReadLine()!;
@@ -29,7 +29,7 @@ namespace ConversorAlgarismoRomano.InputHandlers
             return string.IsNullOrEmpty(InputNumeralUsuario);
         }
 
-        private static void ReiniciarEntradaUsuario()
+        private void ReiniciarEntradaUsuario()
         {
             Console.WriteLine("Insira um numeral.");
             GetNumeralUsuario();

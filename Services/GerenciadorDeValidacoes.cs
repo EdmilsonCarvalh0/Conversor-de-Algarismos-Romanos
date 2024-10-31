@@ -24,8 +24,11 @@ namespace ConversorAlgarismoRomano.Services
         public Numeral IniciarValidacao(string inputNumeralUsuario)
         {
             _validador.ValidarSimbolosDoNumeral(inputNumeralUsuario);
+
             List<Algarismo> algarismos = PrepararAlgarismosParaValidação(inputNumeralUsuario);
+
             _validador.Validar(algarismos);
+
             Numeral.AdicionarAlgarismosNoNumeralValido(algarismos);
 
             return Numeral;

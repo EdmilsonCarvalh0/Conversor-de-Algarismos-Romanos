@@ -13,17 +13,19 @@ namespace ConversorAlgarismoRomano.Controlers
     internal class Orquestrador
     {
         private readonly ConversorService _conversor;
+        private readonly EntradaUsuario _entradaUsuario;
 
         public Orquestrador(ConversorService conversor)
         {
             _conversor = conversor;
+            _entradaUsuario = new EntradaUsuario();
         }
 
         public void Executar()
         {
             while (true)
             {
-                string inputNumeral = EntradaUsuario.GetNumeralUsuario();
+                string inputNumeral = _entradaUsuario.GetNumeralUsuario();
 
                 try
                 {
