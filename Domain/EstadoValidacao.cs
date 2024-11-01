@@ -12,7 +12,7 @@ namespace ConversorAlgarismoRomano.Rules
         public bool EmAplicacao { get; set; }
         public int QuantidadeDeVerificacoes { get; set; }
         public bool EstaDecrescente { get; set; }
-        public bool ExisteSubtracao { get; set; }
+        public bool EstaSubtraindo { get; set; }
         public bool EstaIgual { get; set; }
         public bool BlocoRepeticaoCompleto { get; set; }
         public int Repetido { get; set; }
@@ -24,7 +24,7 @@ namespace ConversorAlgarismoRomano.Rules
             EmAplicacao = true;
             QuantidadeDeVerificacoes = 1;
             EstaDecrescente = false;
-            ExisteSubtracao = false;
+            EstaSubtraindo = false;
             EstaIgual = false;
             BlocoRepeticaoCompleto = false;
             Repetido = 0;
@@ -57,14 +57,13 @@ namespace ConversorAlgarismoRomano.Rules
                 ReiniciarEstado();
                 PonteiroAtual++;
                 PonteiroSeguinte++;
-                //continue;
             }
         }
 
         internal void ReiniciarEstado()
         {
             EstaDecrescente = false;
-            ExisteSubtracao = false;
+            EstaSubtraindo = false;
             EstaIgual = false;
             BlocoRepeticaoCompleto = false;
             Repetido = 0;

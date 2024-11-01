@@ -20,13 +20,13 @@ namespace ConversorAlgarismoRomano.Models
             Valido = false;
         }
 
-        public static readonly Simbolo i = new Simbolo('I');
-        public static readonly Simbolo v = new Simbolo('V');
-        public static readonly Simbolo x = new Simbolo('X');
-        public static readonly Simbolo l = new Simbolo('L');
-        public static readonly Simbolo c = new Simbolo('C');
-        public static readonly Simbolo d = new Simbolo('D');
-        public static readonly Simbolo m = new Simbolo('M');
+        public static readonly Simbolo i;
+        public static readonly Simbolo v;
+        public static readonly Simbolo x;
+        public static readonly Simbolo l;
+        public static readonly Simbolo c;
+        public static readonly Simbolo d;
+        public static readonly Simbolo m;
 
         public static ImmutableList<Simbolo> Simbolos { get; private set; }
 

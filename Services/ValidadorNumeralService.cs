@@ -49,14 +49,14 @@ namespace ConversorAlgarismoRomano.Services
             AplicarValidacaoDecrescencia(algarismoAtual, proximoAlgarismo);
             AplicarValidacaoIgualdade(algarismoAtual, proximoAlgarismo);
 
-            _estado.ExisteSubtracao = _regraSubtracao.ChecarSubtracao(algarismoAtual, proximoAlgarismo);
+            _estado.EstaSubtraindo = _regraSubtracao.ChecarSubtracao(algarismoAtual, proximoAlgarismo);
             _estado.EstaDecrescente = _regraDecrescencia.ChecarDecrescencia(algarismoAtual, proximoAlgarismo);
             _estado.EstaIgual = _regraIgualdade.ChecarIgualdade(algarismoAtual, proximoAlgarismo);
         }
 
         private void AplicarValidacaoSubtracao(Algarismo algarismoAtual, Algarismo proximoAlgarismo)
         {
-            if (_estado.ExisteSubtracao)
+            if (_estado.EstaSubtraindo)
             {
                 if (_regraSubtracao.ChecarSubtracao(algarismoAtual, proximoAlgarismo))
                 {
@@ -120,8 +120,8 @@ namespace ConversorAlgarismoRomano.Services
 
         private void AvaliarSeHaSubtracaoPosRepeticao(Algarismo algarismoAtual, Algarismo proximoAlgarismo)
         {
-            _estado.ExisteSubtracao = _regraSubtracao.ChecarSubtracao(algarismoAtual, proximoAlgarismo);
-            if (_estado.ExisteSubtracao)
+            _estado.EstaSubtraindo = _regraSubtracao.ChecarSubtracao(algarismoAtual, proximoAlgarismo);
+            if (_estado.EstaSubtraindo)
             {
                 _estado.ReiniciarEstado();
                 throw new NumeralInvalidoException($"O numeral apresenta uma subtração após uma repetição de um algarismo.");

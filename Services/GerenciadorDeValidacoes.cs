@@ -46,24 +46,5 @@ namespace ConversorAlgarismoRomano.Services
             }
             return algarismosAVerificar;
         }
-
-
-
-
-
-
-
-
-        //private bool Validar(List<Algarismo> algarismosAVerificar)
-        //{
-        //    foreach (var regra in _regras)
-        //    {
-        //        if (!regra.Aplicar(algarismosAVerificar))
-        //        {
-        //            return false;
-        //        }
-        //    }
-        //    return true;
-        //}
     }
 }

@@ -38,6 +38,7 @@ namespace ConversorAlgarismoRomano.Rules.Validacoes
         {
             return primeiroAlgarismo.ValorCorrespondente > segundoAlgarismo.ValorCorrespondente;
         }
+
         public void ChecarPosteriores(Algarismo primeiroAlgarismo, Algarismo segundoAlgarismo)
         {
             if (Posteriores.ContainsKey(primeiroAlgarismo))
