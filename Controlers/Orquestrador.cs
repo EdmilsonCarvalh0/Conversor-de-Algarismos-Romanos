@@ -33,7 +33,7 @@ namespace ConversorAlgarismoRomano.Controlers
 
                     int resultado = _conversor.Converter();
 
-                    EntradaUsuario.ExibirResultado(resultado);
+                    _entradaUsuario.ExibirResultado(resultado);
                     break;
                 }
                 catch (NumeralInvalidoException ex)

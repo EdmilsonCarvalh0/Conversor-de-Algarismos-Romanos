@@ -8,7 +8,7 @@ namespace ConversorAlgarismoRomano.Models
 {
     public class Numeral
     {
-        public bool Valido { get;  set; }
+        public bool Valido { get; set; }
         public List<Algarismo> AlgarismosDoNumeral { get; private set; }
 
         public Numeral()

@@ -32,19 +32,19 @@ namespace ConversorAlgarismoRomano.Models
 
         static Simbolo()
         {
-            i = new Simbolo('I');
+            i = new Simbolo('i');
             i.Valido = true;
-            v = new Simbolo('V');
+            v = new Simbolo('v');
             v.Valido = true;
-            x = new Simbolo('X');
+            x = new Simbolo('x');
             x.Valido = true;
-            l = new Simbolo('L');
+            l = new Simbolo('l');
             l.Valido = true;
-            c = new Simbolo('C');
+            c = new Simbolo('c');
             c.Valido = true;
-            d = new Simbolo('D');
+            d = new Simbolo('d');
             d.Valido = true;
-            m = new Simbolo('M');
+            m = new Simbolo('m');
             m.Valido = true;
 
             Simbolos = ImmutableList.Create(i, v, x, l, c, d, m);

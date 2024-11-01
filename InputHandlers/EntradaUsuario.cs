@@ -10,7 +10,7 @@ namespace ConversorAlgarismoRomano.InputHandlers
 {
     public class EntradaUsuario
     {
-        private static string InputNumeralUsuario { get; set; } = "";
+        private string InputNumeralUsuario { get; set; } = "";
 
         public static Numeral Numeral { get; private set; } = new Numeral();
 
@@ -24,7 +24,7 @@ namespace ConversorAlgarismoRomano.InputHandlers
 
             return InputNumeralUsuario;
         }
-        private static bool VerificarInput()
+        private bool VerificarInput()
         {
             return string.IsNullOrEmpty(InputNumeralUsuario);
         }
@@ -36,7 +36,7 @@ namespace ConversorAlgarismoRomano.InputHandlers
             Console.Clear();
         }
 
-        public static void ExibirResultado(int resultado)
+        public void ExibirResultado(int resultado)
         {
             Console.WriteLine($"O numeral {InputNumeralUsuario.ToUpper()} tem como valor {resultado}.");
         }
