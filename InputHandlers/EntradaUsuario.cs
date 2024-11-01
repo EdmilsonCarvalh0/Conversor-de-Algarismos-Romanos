@@ -10,30 +10,27 @@ namespace ConversorAlgarismoRomano.InputHandlers
 {
     public class EntradaUsuario
     {
-        private string InputNumeralUsuario { get; set; } = "";
+        private string _inputUsuario = "";
+        public string InputNumeralUsuario
+        {
+            get => _inputUsuario;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("Por favor, insira um numeral.");
+                }
 
-        public static Numeral Numeral { get; private set; } = new Numeral();
+                _inputUsuario = value;
+            }
+        }
 
         public string GetNumeralUsuario()
         {
             Console.WriteLine("Informe um numeral romano para converter: ");
             InputNumeralUsuario = Console.ReadLine()!;
 
-            bool inputVazio = VerificarInput();
-            if (inputVazio) ReiniciarEntradaUsuario();
-
             return InputNumeralUsuario;
-        }
-        private bool VerificarInput()
-        {
-            return string.IsNullOrEmpty(InputNumeralUsuario);
-        }
-
-        private void ReiniciarEntradaUsuario()
-        {
-            Console.WriteLine("Insira um numeral.");
-            GetNumeralUsuario();
-            Console.Clear();
         }
 
         public void ExibirResultado(int resultado)

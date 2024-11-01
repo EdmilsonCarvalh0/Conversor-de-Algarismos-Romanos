@@ -25,10 +25,10 @@ namespace ConversorAlgarismoRomano.Controlers
         {
             while (true)
             {
-                string inputNumeral = _entradaUsuario.GetNumeralUsuario();
-
                 try
                 {
+                    string inputNumeral = _entradaUsuario.GetNumeralUsuario();
+
                     _conversor.PrepararParaConversao(inputNumeral);
 
                     int resultado = _conversor.Converter();
@@ -37,6 +37,10 @@ namespace ConversorAlgarismoRomano.Controlers
                     break;
                 }
                 catch (NumeralInvalidoException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                catch (ArgumentException ex)
                 {
                     Console.WriteLine(ex.Message);
                 }
