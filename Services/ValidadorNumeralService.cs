@@ -64,7 +64,7 @@ namespace ConversorAlgarismoRomano.Services
                     _estado.PonteiroSeguinte++;
                     return;
                 }
-
+                // REVER ALGARISMO XCD - Subtração consecutiva
                 AvaliarSeHaDecrescenciaPosSubtracao(algarismoAtual, proximoAlgarismo);
             }
         }
@@ -103,7 +103,7 @@ namespace ConversorAlgarismoRomano.Services
             if (!temDecrescencia)
             {
                 _estado.ReiniciarEstado();
-                throw new NumeralInvalidoException($"O numeral infringe as regras de subtração.");
+                throw new NumeralInvalidoException($"O numeral subtrações consecutivas.");
             }
         }
 
@@ -112,6 +112,12 @@ namespace ConversorAlgarismoRomano.Services
             _estado.EstaIgual = _regraIgualdade.ChecarIgualdade(algarismoAtual, proximoAlgarismo);
             if (_estado.EstaIgual)
             {
+                if (_regraIgualdade.ChecarRepeticaoInvalida(algarismoAtual, proximoAlgarismo))
+                {
+                    _estado.ReiniciarEstado();
+                    throw new NumeralInvalidoException($"O algarismo {algarismoAtual.Simbolo!.Letra} não pode ser repetido.");
+                }
+
                 _estado.Repetido += ControlarRepeticao(_estado.EstaIgual);
                 _estado.PonteiroAtual++;
                 _estado.PonteiroSeguinte++;

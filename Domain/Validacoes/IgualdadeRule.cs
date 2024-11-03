@@ -23,21 +23,12 @@ namespace ConversorAlgarismoRomano.Rules.Validacoes
 
         public bool ChecarIgualdade(Algarismo primeiroAlgarismo, Algarismo segundoAlgarismo)
         {
-            bool igual = (primeiroAlgarismo.Equals(segundoAlgarismo));
-            if (igual)
-            {
-                ChecarRepeticaoInvalida(primeiroAlgarismo, segundoAlgarismo);
-                return true;
-            }
-            return false;
+            return primeiroAlgarismo.Equals(segundoAlgarismo) ? true : false;
         }
 
-        private void ChecarRepeticaoInvalida(Algarismo primeiroAlgarismo, Algarismo segundoAlgarismo)
+        public bool ChecarRepeticaoInvalida(Algarismo primeiroAlgarismo, Algarismo segundoAlgarismo)
         {
-            if (AlgarismosSemRepeticao.Contains(segundoAlgarismo))
-            {
-                throw new NumeralInvalidoException($"O numeral apresenta sequência inválida de algarismo.");
-            }
+            return AlgarismosSemRepeticao.Contains(segundoAlgarismo) ? true : false;
         }
     }
 }

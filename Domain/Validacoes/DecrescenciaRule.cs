@@ -47,7 +47,8 @@ namespace ConversorAlgarismoRomano.Rules.Validacoes
                 bool posterioridadeValida = algarismosPermitidos.Contains(segundoAlgarismo);
                 if (!posterioridadeValida)
                 {
-                    throw new NumeralInvalidoException($"O numeral apresenta sequência inválida de algarismo.");
+                    // TRANSFERIR EXCEÇÕES PARA O VALIDADOR POIS NECESSITA REINICIAR O _estado
+                    throw new NumeralInvalidoException($"DECRESCENCIA O numeral apresenta sequência inválida de algarismo.");
                 }
             }
         }

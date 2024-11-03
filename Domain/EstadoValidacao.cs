@@ -9,7 +9,6 @@ namespace ConversorAlgarismoRomano.Rules
 {
     internal class EstadoValidacao
     {
-        public bool EmAplicacao { get; set; }
         public int QuantidadeDeVerificacoes { get; set; }
         public bool EstaDecrescente { get; set; }
         public bool EstaSubtraindo { get; set; }
@@ -21,7 +20,6 @@ namespace ConversorAlgarismoRomano.Rules
 
         public EstadoValidacao()
         {
-            EmAplicacao = true;
             QuantidadeDeVerificacoes = 1;
             EstaDecrescente = false;
             EstaSubtraindo = false;
@@ -43,11 +41,6 @@ namespace ConversorAlgarismoRomano.Rules
             {
                 QuantidadeDeVerificacoes = 0;
             }
-        }
-
-        internal void MonitorarValidacao()
-        {
-            EmAplicacao = !(QuantidadeDeVerificacoes == 0);
         }
 
         internal void ControlarBlocoRepeticao()

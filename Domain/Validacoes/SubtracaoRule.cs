@@ -11,7 +11,7 @@ namespace ConversorAlgarismoRomano.Rules.Validacoes
     internal class SubtracaoRule : IRegraValidacao
     {
         private static Dictionary<Algarismo, List<Algarismo>> Subtracoes { get; }
-        private static Dictionary<Algarismo, List<Algarismo>> PosterioresDaSubtracao { get; }
+        private static Dictionary<Algarismo, List<Algarismo>> PosterioresDaSubtracaoValidos { get; }
 
         static SubtracaoRule()
         {
@@ -30,7 +30,7 @@ namespace ConversorAlgarismoRomano.Rules.Validacoes
                 {c, new List<Algarismo> {d,m} },
             };
 
-            PosterioresDaSubtracao = new Dictionary<Algarismo, List<Algarismo>>
+            PosterioresDaSubtracaoValidos = new Dictionary<Algarismo, List<Algarismo>>
             {
                 {l, new List<Algarismo> {v,i} },
                 {c, new List<Algarismo> {v,i} },
@@ -41,9 +41,9 @@ namespace ConversorAlgarismoRomano.Rules.Validacoes
 
         public void ChecarPosterioresDaSubtracao(Algarismo primeiroAlgarismo, Algarismo segundoAlgarismo)
         {
-            if (PosterioresDaSubtracao.ContainsKey(primeiroAlgarismo))
+            if (PosterioresDaSubtracaoValidos.ContainsKey(primeiroAlgarismo))
             {
-                var algarismosPermitidos = PosterioresDaSubtracao[primeiroAlgarismo];
+                var algarismosPermitidos = PosterioresDaSubtracaoValidos[primeiroAlgarismo];
                 bool posterioridadeValida = algarismosPermitidos.Contains(segundoAlgarismo);
                 if (!posterioridadeValida)
                 {
@@ -62,14 +62,27 @@ namespace ConversorAlgarismoRomano.Rules.Validacoes
                 if (pertenceAUmaCombinacao)
                 {
                     var algarismosPermitidos = Subtracoes[primeiroAlgarismo];
-                    bool combinacaoPermitida = (algarismosPermitidos.Contains(segundoAlgarismo));
-                    if (combinacaoPermitida)
+                    if (algarismosPermitidos.Contains(segundoAlgarismo))
                     {
                         return true;
                     }
+                    else
+                    {
+                        LancarExcecaoDePosterioridadeInvalida();
+                    }
+                }
+                else
+                {
+                    LancarExcecaoDePosterioridadeInvalida();
                 }
             }
             return false;
+        }
+
+        // TRANSFERIR EXCEÇÕES PARA O VALIDADOR POIS NECESSITA REINICIAR O _estado
+        public void LancarExcecaoDePosterioridadeInvalida()
+        {
+            throw new NumeralInvalidoException($"O numeral apresenta uma sequência inválida de algarismos.");
         }
     }
 }
